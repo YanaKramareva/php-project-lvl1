@@ -1,0 +1,20 @@
+{
+    "name": "hexlet/code",
+    "description": "my first project php",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yana Kramareva",
+            "email": "iana2000@mail.ru"
+        }
+    ],
+    "bin": [
+        "bin/brain-games"
+    ],
+    "require": {}
+}
