@@ -3,6 +3,9 @@
     "description": "my first project php",
     "license": "MIT",
     "autoload": {
+        "files": [
+            "src/Cli.php"
+        ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
         }
@@ -16,5 +19,8 @@
     "bin": [
         "bin/brain-games"
     ],
-    "require": {}
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.13",
+        "squizlabs/php_codesniffer": "^3.6"
+    }
 }
