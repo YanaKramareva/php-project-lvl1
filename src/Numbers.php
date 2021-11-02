@@ -11,11 +11,14 @@ use function cli\prompt;
  */
 function chooseNumber()
 {
+    $arrayNumbers = [];
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     line('Hello, %s!', $name);
     line('Answer "yes" if the number is even, otherwise answer "no".');
-    $arrayNumbers = [date('H'), date('i'), date('s')];
+    for ($i = 0; $i < 3; $i++) {
+        $arrayNumbers[$i] = rand(0, 100);
+    }
     $countCorrectAnswers = 0;
     foreach ($arrayNumbers as $Numbers) {
            $answer =  prompt('Question', $Numbers);
