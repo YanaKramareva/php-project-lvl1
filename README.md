@@ -4,3 +4,4 @@
 [![PHP CI](https://github.com/YanaKramareva/php-project-lvl1/actions/workflows/workflow.yml/badge.svg)](https://github.com/YanaKramareva/php-project-lvl1/actions/workflows/workflow.yml)
 https://asciinema.org/a/qEihyLu2iu2k3vmiD5Zxl2ucU
 https://asciinema.org/a/l1d7VCin2LQHU36LG6Kckrpht
+https://asciinema.org/a/cNc4XOeCxHFLbZkd4efMb5luH

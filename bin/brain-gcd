@@ -1,0 +1,37 @@
+#! /usr/bin/env php
+
+<?php
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+use Brain\Games\List_of_functions;
+use function cli\line;
+
+$userName = print_r(List_of_functions\greet_user(), true);
+line('Find the greatest common divisor of given numbers.');
+$countCorrectAnswers = 0;
+for ($i=0; $i < 3; $i++) {
+    $operand = ' ';
+    $randomNumbers = List_of_functions\choose_numbers();
+    $userAnswer = List_of_functions\ask_to_calculate($randomNumbers, $operand);
+    $correctAnswer = List_of_functions\gcd($randomNumbers);
+    $isCorrectAnswer = List_of_functions\is_correct_answer($userAnswer, $correctAnswer);
+    if ($isCorrectAnswer == 1) {
+        $countCorrectAnswers = $countCorrectAnswers + 1;
+            }
+    else {
+        $allCorrectAnswers = false;
+        print_r(List_of_functions\show_user_result($allCorrectAnswers, $userName));
+        break;
+    }
+   }
+if ($countCorrectAnswers == 3) {
+    $allCorrectAnswers = true;
+    print_r(List_of_functions\show_user_result($allCorrectAnswers, $userName));
+}

@@ -6,7 +6,6 @@ namespace Brain\Games\List_of_functions {
     use function cli\prompt;
 
     /**Приветствие, возврат имени пользователя
-     *
      * @return string
      */
     function greet_user(): string
@@ -23,7 +22,7 @@ namespace Brain\Games\List_of_functions {
      */
     function choose_numbers(): array
     {
-        return [rand(0, 10), rand(0, 10)];
+        return [rand(1, 10), rand(1, 10)];
     }
 
     /**
@@ -78,27 +77,49 @@ namespace Brain\Games\List_of_functions {
     }
 
     /**
-     * Выбирает произвольно математическую операцию.
+     *Вычисляет наибольший общий делитель
+     * @param $randomNumbers
      * @return string
      */
-    function choose_operation(): string
-    {
-        $operands_array = ['+', '-', '*'];
-        $rand_key = array_rand($operands_array);
-        return $operands_array[$rand_key];
-    }
 
-    /**
-     * @param $countCorrectAnswers
-     * @param $user_name
-     * Печатает результат работы
-     */
-    function show_user_result($countCorrectAnswers, $user_name)
+    function gcd($randomNumbers)
     {
-        if ($countCorrectAnswers == true) {
-            line('Congratulations, %s!', $user_name);
-        } else {
-            line("Let's try again, %s!", $user_name);
+        [$n, $m] = $randomNumbers;
+                while(true) {
+                if($n == $m) {
+                    return $m;
+                }
+                if($n > $m) {
+                    $n -= $m;
+                } else {
+                    $m -= $n;
+                }
+            }
+        }
+
+        /**
+         * Выбирает произвольно математическую операцию.
+         * @return string
+         */
+        function choose_operation(): string
+        {
+            $operands_array = ['+', '-', '*'];
+            $rand_key = array_rand($operands_array);
+            return $operands_array[$rand_key];
+        }
+
+        /**
+         * @param $countCorrectAnswers
+         * @param $user_name
+         * Печатает результат работы
+         */
+        function show_user_result($countCorrectAnswers, $user_name)
+        {
+            if ($countCorrectAnswers == true) {
+                line('Congratulations, %s!', $user_name);
+            } else {
+                line("Let's try again, %s!", $user_name);
+            }
         }
     }
-}
+
