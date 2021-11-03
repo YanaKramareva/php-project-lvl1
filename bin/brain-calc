@@ -19,9 +19,9 @@ $countCorrectAnswers = 0;
 for ($i=0; $i < 3; $i++) {
     $operand = List_of_functions\choose_operation();
     $randomNumbers = List_of_functions\choose_numbers();
-    $userAnswer = List_of_functions\ask_user_to_calculate($randomNumbers, $operand);
+    $userAnswer = List_of_functions\ask_to_calculate($randomNumbers, $operand);
     $correctAnswer = List_of_functions\calculate_correct_answer($randomNumbers, $operand);
-    $isCorrectAnswer = List_of_functions\compare_is_correct_answer($userAnswer, $correctAnswer);
+    $isCorrectAnswer = List_of_functions\is_correct_answer($userAnswer, $correctAnswer);
     if ($isCorrectAnswer == 1) {
         $countCorrectAnswers = $countCorrectAnswers + 1;
             }
