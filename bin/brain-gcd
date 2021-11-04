@@ -13,25 +13,25 @@ if (file_exists($autoloadPath1)) {
 use Brain\Games\List_of_functions;
 use function cli\line;
 
-$userName = print_r(List_of_functions\greet_user(), true);
+$user_name = print_r(List_of_functions\greetUser(), true);
 line('Find the greatest common divisor of given numbers.');
-$countCorrectAnswers = 0;
+$count_correct_answers = 0;
 for ($i=0; $i < 3; $i++) {
     $operand = ' ';
-    $randomNumbers = List_of_functions\choose_numbers();
-    $userAnswer = List_of_functions\ask_to_calculate($randomNumbers, $operand);
-    $correctAnswer = List_of_functions\gcd($randomNumbers);
-    $isCorrectAnswer = List_of_functions\is_correct_answer($userAnswer, $correctAnswer);
+    $random_numbers = List_of_functions\chooseNumbers();
+    $user_answer = List_of_functions\askToCalculate($random_numbers, $operand);
+    $correct_answer = List_of_functions\gcd($random_numbers);
+    $isCorrectAnswer = List_of_functions\isCorrectAnswer($user_answer, $correct_answer);
     if ($isCorrectAnswer == 1) {
-        $countCorrectAnswers = $countCorrectAnswers + 1;
+        $count_correct_answers = $count_correct_answers + 1;
             }
     else {
-        $allCorrectAnswers = false;
-        print_r(List_of_functions\show_user_result($allCorrectAnswers, $userName));
+        $correct_answers = false;
+        print_r(List_of_functions\showUserResult($correct_answers, $user_name));
         break;
     }
    }
-if ($countCorrectAnswers == 3) {
-    $allCorrectAnswers = true;
-    print_r(List_of_functions\show_user_result($allCorrectAnswers, $userName));
+if ($count_correct_answers == 3) {
+    $correct_answers = true;
+    print_r(List_of_functions\showUserResult($correct_answers, $user_name));
 }

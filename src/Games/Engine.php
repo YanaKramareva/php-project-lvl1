@@ -8,7 +8,7 @@ namespace Brain\Games\List_of_functions {
     /**Приветствие, возврат имени пользователя
      * @return string
      */
-    function greet_user(): string
+    function greetUser(): string
     {
         line('Welcome to the Brain Game!');
         $user_name = prompt('May I have your name?');
@@ -20,7 +20,7 @@ namespace Brain\Games\List_of_functions {
      * Выбирает произвольные числа от 0 до 10
      * @return array
      */
-    function choose_numbers(): array
+    function chooseNumbers(): array
     {
         return [rand(1, 10), rand(1, 10)];
     }
@@ -31,95 +31,94 @@ namespace Brain\Games\List_of_functions {
      * @param $operand
      * @return string
      */
-    function ask_to_calculate($randomNumbers, $operand): string
+    function askToCalculate($random_numbers, $operand): string
     {
-        $request = $randomNumbers[0] . $operand . $randomNumbers[1];
+        $request = $random_numbers[0] . $operand . $random_numbers[1];
         return prompt('Question', $request);
     }
 
     /**
      * Сравнивает ответ пользователя с правильным ответом.
      * При правильном ответе возвращает 1, иначе ноль
-     * @param $userAnswer
-     * @param $correctAnswer
+     * @param $user_answer
+     * @param $correct_answer
      * @return int
      */
-    function is_correct_answer($userAnswer, $correctAnswer): int
+    function isCorrectAnswer($user_answer, $correct_answer): int
     {
         $result = 0;
-        if (strcasecmp($userAnswer, $correctAnswer) == 0) {
+        if (strcasecmp($user_answer, $correct_answer) == 0) {
             line('Correct!');
             $result = 1;
         } else {
-            line('%s is wrong answer ;(', $userAnswer);
-            line(' Correct answer was %s.', $correctAnswer);
+            line('%s is wrong answer ;(', $user_answer);
+            line(' Correct answer was %s.', $correct_answer);
         }
         return $result;
     }
 
     /**
      * Принимает на вход числа и операнд, возвращает результат.
-     * @param $randomNumbers
+     * @param $random_numbers
      * @param $operand
      * @return string
      */
-    function calculate_correct_answer($randomNumbers, $operand): string
+    function calculateCorrectAnswer($random_numbers, $operand): string
     {
         $correct_answer = '';
         if ($operand == '+') {
-            $correct_answer = $randomNumbers[0] + $randomNumbers[1];
+            $correct_answer = $random_numbers[0] + $random_numbers[1];
         } elseif ($operand == '-') {
-            $correct_answer = $randomNumbers[0] - $randomNumbers[1];
+            $correct_answer = $random_numbers[0] - $random_numbers[1];
         } elseif ($operand == '*') {
-            $correct_answer = $randomNumbers[0] * $randomNumbers[1];
+            $correct_answer = $random_numbers[0] * $random_numbers[1];
         }
         return $correct_answer;
     }
 
     /**
      *Вычисляет наибольший общий делитель
-     * @param $randomNumbers
+     * @param $random_numbers
      * @return string
      */
 
-    function gcd($randomNumbers)
+    function gcd($random_numbers)
     {
-        [$n, $m] = $randomNumbers;
-                while(true) {
-                if($n == $m) {
-                    return $m;
-                }
-                if($n > $m) {
-                    $n -= $m;
-                } else {
-                    $m -= $n;
-                }
+        [$number1, $number2] = $random_numbers;
+        while (true) {
+            if ($number1 == $number2) {
+                    return $number2;
+            }
+            if ($number1 > $number2) {
+                $number1 -= $number2;
+            } else {
+                $number2 -= $number1;
             }
         }
+    }
 
         /**
          * Выбирает произвольно математическую операцию.
          * @return string
          */
-        function choose_operation(): string
-        {
-            $operands_array = ['+', '-', '*'];
-            $rand_key = array_rand($operands_array);
-            return $operands_array[$rand_key];
-        }
+    function chooseOperation(): string
+    {
+        $operands_array = ['+', '-', '*'];
+        $rand_key = array_rand($operands_array);
+        return $operands_array[$rand_key];
+    }
 
         /**
-         * @param $countCorrectAnswers
+         * @param $count_correct_answers
          * @param $user_name
          * Печатает результат работы
          */
-        function show_user_result($countCorrectAnswers, $user_name)
-        {
-            if ($countCorrectAnswers == true) {
-                line('Congratulations, %s!', $user_name);
-            } else {
-                line("Let's try again, %s!", $user_name);
-            }
+    function showUserResult($count_correct_answers, $user_name)
+    {
+        if ($count_correct_answers == true) {
+            line('Congratulations, %s!', $user_name);
+        } else {
+            line("Let's try again, %s!", $user_name);
         }
     }
-
+}
