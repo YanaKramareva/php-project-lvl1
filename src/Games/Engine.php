@@ -17,7 +17,7 @@ namespace Brain\Games\List_of_functions {
     }
 
     /**
-     * Выбирает произвольные числа от 0 до 10
+     * Выбирает произвольные числа от 1 до 10
      * @return array
      */
     function chooseNumbers(): array
@@ -27,7 +27,7 @@ namespace Brain\Games\List_of_functions {
 
     /**
      * Принимает на вход произвольные числа и операнд, формирует выражение, принимает ответ пользователя
-     * @param $randomNumbers
+     * @param $random_numbers
      * @param $operand
      * @return string
      */
@@ -35,6 +35,28 @@ namespace Brain\Games\List_of_functions {
     {
         $request = $random_numbers[0] . $operand . $random_numbers[1];
         return prompt('Question', $request);
+    }
+
+    /**
+     * Выводит прогрессию пользователю с пропущенным значением
+     * @param array $progression
+     * @return string
+     */
+    function askToCalculateProgression(array $progression)
+    {
+        $user_progression = [];
+        $missing_number = rand(1, 9);
+                for ($i = 0,  $length = count($progression); $i < $length; $i++) {
+            if ($i != $missing_number) {
+                $user_progression[$i] = $progression[$i];
+            } else {
+                $user_progression[$i] = '..';
+                $key = $i;
+            }
+            $user_version_progression = implode(' ', $user_progression);
+            return prompt('Question:', $user_version_progression);
+
+        }
     }
 
     /**
@@ -48,6 +70,18 @@ namespace Brain\Games\List_of_functions {
     {
         $result = 0;
         if (strcasecmp($user_answer, $correct_answer) == 0) {
+            line('Correct!');
+            $result = 1;
+        } else {
+            line('%s is wrong answer ;(', $user_answer);
+            line(' Correct answer was %s.', $correct_answer);
+        }
+        return $result;
+    }
+    function isCorrectAnswerProgression($user_answer, $correct_answer): int
+    {
+        $result = 0;
+        if (array_diff($user_answer, $correct_answer) == []) {
             line('Correct!');
             $result = 1;
         } else {
@@ -97,7 +131,23 @@ namespace Brain\Games\List_of_functions {
         }
     }
 
-        /**
+    /**
+     * Формирует прогрессию из 10 элементов.
+     * На вход принимает 2 случайных числа: первый элемент + шаг
+     * @param $random_numbers
+     * @return mixed
+     */
+    function makeProgression($random_numbers)
+    {
+        [$start_number, $step] = $random_numbers;
+        $progression[0] = $start_number;
+        for ($i = 1; $i < 10; $i++) {
+            $progression[$i] = $progression[$i - 1] + $step;
+        }
+        return $progression;
+    }
+
+    /**
          * Выбирает произвольно математическую операцию.
          * @return string
          */
