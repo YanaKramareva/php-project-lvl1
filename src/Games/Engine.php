@@ -34,22 +34,28 @@ namespace Brain\Games\List_of_functions {
     function askToCalculate($random_numbers, $operand): string
     {
         $request = $random_numbers[0] . $operand . $random_numbers[1];
-        return prompt('Question', $request);
+        return prompt('Question: ', $request);
     }
 
     /**
      * Выводит прогрессию пользователю с пропущенным значением
-     * @param array $progression
+     * @param array $user_progression
      * @return string
      */
     function askToCalculateProgression(array $user_progression)
     {
         $progression_to_string = implode(' ', $user_progression);
-        $answer =  prompt('Question:', $progression_to_string);
+        $answer =  prompt('Question: ', $progression_to_string);
         line('Your answer: %s', $answer);
         return $answer;
     }
 
+    function askQuestion(int $random_number)
+    {
+        $answer =  prompt('Question: ', $random_number);
+        line('Your answer: %s', $answer);
+        return $answer;
+    }
     /**
      * Сравнивает ответ пользователя с правильным ответом.
      * При правильном ответе возвращает 1, иначе ноль
@@ -89,6 +95,18 @@ namespace Brain\Games\List_of_functions {
         return $correct_answer;
     }
 
+    function calculateSimpleNumber($is_simple_number): bool
+    {
+        $correct_answer = true;
+        for ($i = 2; $i < $is_simple_number; $i++) {
+            if ($is_simple_number % $i == 0) {
+                $correct_answer = false;
+                break;
+            }
+        }
+        return $correct_answer;
+    }
+
     /**
      *Вычисляет наибольший общий делитель
      * @param $random_numbers
@@ -114,9 +132,9 @@ namespace Brain\Games\List_of_functions {
      * Формирует прогрессию из 10 элементов.
      * На вход принимает 2 случайных числа: первый элемент + шаг
      * @param $random_numbers
-     * @return mixed
+     * @return array
      */
-    function makeProgression($random_numbers)
+    function makeProgression($random_numbers): array
     {
         [$start_number, $step] = $random_numbers;
         $progression[0] = $start_number;
@@ -138,13 +156,13 @@ namespace Brain\Games\List_of_functions {
     }
 
         /**
-         * @param $count_correct_answers
+         * @param $all_correct
          * @param $user_name
          * Печатает результат работы
          */
-    function showUserResult($count_correct_answers, $user_name)
+    function showUserResult($all_correct, $user_name)
     {
-        if ($count_correct_answers == true) {
+        if ($all_correct == true) {
             line('Congratulations, %s!', $user_name);
         } else {
             line("Let's try again, %s!", $user_name);
