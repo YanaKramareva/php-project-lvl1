@@ -42,21 +42,12 @@ namespace Brain\Games\List_of_functions {
      * @param array $progression
      * @return string
      */
-    function askToCalculateProgression(array $progression)
+    function askToCalculateProgression(array $user_progression)
     {
-        $user_progression = [];
-        $missing_number = rand(1, 9);
-                for ($i = 0,  $length = count($progression); $i < $length; $i++) {
-            if ($i != $missing_number) {
-                $user_progression[$i] = $progression[$i];
-            } else {
-                $user_progression[$i] = '..';
-                $key = $i;
-            }
-            $user_version_progression = implode(' ', $user_progression);
-            return prompt('Question:', $user_version_progression);
-
-        }
+        $progression_to_string = implode(' ', $user_progression);
+        $answer =  prompt('Question:', $progression_to_string);
+        line('Your answer: %s', $answer);
+        return $answer;
     }
 
     /**
@@ -70,18 +61,6 @@ namespace Brain\Games\List_of_functions {
     {
         $result = 0;
         if (strcasecmp($user_answer, $correct_answer) == 0) {
-            line('Correct!');
-            $result = 1;
-        } else {
-            line('%s is wrong answer ;(', $user_answer);
-            line(' Correct answer was %s.', $correct_answer);
-        }
-        return $result;
-    }
-    function isCorrectAnswerProgression($user_answer, $correct_answer): int
-    {
-        $result = 0;
-        if (array_diff($user_answer, $correct_answer) == []) {
             line('Correct!');
             $result = 1;
         } else {
