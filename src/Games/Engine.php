@@ -42,7 +42,7 @@ namespace Brain\Games\Engine {
         } elseif ($game == 'brain-progression') {
             $request = implode(' ', $random_numbers);
         }
-        $answer = prompt('Question: ', $request,' ',true);
+        $answer = prompt('Question: ', $request, ' ', true);
         line('Your answer %s', $answer);
         return $answer;
     }
