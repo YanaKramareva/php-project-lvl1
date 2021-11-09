@@ -1,171 +1,109 @@
 <?php
 
-namespace Brain\Games\List_of_functions {
+namespace Brain\Games\Engine {
 
+    use function Brain\Games\brainCalc\brainCalc;
+    use function Brain\Games\brainCalc\chooseOperation;
+    use function Brain\Games\brainGCD\brainGCD;
+    use function Brain\Games\brainPrime\brainPrime;
+    use function Brain\Games\brainProgression\brainProgression;
+    use function Brain\Games\brainProgression\makeProgression;
+    use function Brain\Games\brainProgression\makeUserProgression;
     use function cli\line;
     use function cli\prompt;
 
     /**Приветствие, возврат имени пользователя
+     * @param $game
      * @return string
      */
-    function greetUser(): string
+
+    function welcome($game): string
     {
         line('Welcome to the Brain Game!');
         $user_name = prompt('May I have your name?');
         line('Hello, %s!', $user_name);
+        if ($game == 'brain-calc') {
+            line('What is the result of the expression?');
+        } elseif ($game == 'brain-prime') {
+            line('Answer "yes" if given number is prime. Otherwise answer "no".');
+        } elseif ($game == 'brain-progression') {
+            line('What number is missing in the progression?');
+        } elseif ($game == 'brain-gcd') {
+            line('Find the greatest common divisor of given numbers.');
+        }
         return $user_name;
     }
 
-    /**
-     * Выбирает произвольные числа от 1 до 10
-     * @return array
-     */
-    function chooseNumbers(): array
-    {
-        return [rand(1, 10), rand(1, 10)];
-    }
-
-    /**
-     * Принимает на вход произвольные числа и операнд, формирует выражение, принимает ответ пользователя
-     * @param $random_numbers
-     * @param $operand
-     * @return string
-     */
-    function askToCalculate($random_numbers, $operand): string
+    function askUser(string $game, array $random_numbers, string $operand = ' '): string
     {
         $request = $random_numbers[0] . $operand . $random_numbers[1];
-        return prompt('Question: ', $request);
-    }
-
-    /**
-     * Выводит прогрессию пользователю с пропущенным значением
-     * @param array $user_progression
-     * @return string
-     */
-    function askToCalculateProgression(array $user_progression)
-    {
-        $progression_to_string = implode(' ', $user_progression);
-        $answer =  prompt('Question: ', $progression_to_string);
-        line('Your answer: %s', $answer);
+        if ($game == 'brain-prime') {
+            $request =  $random_numbers[0];
+        } elseif ($game == 'brain-progression') {
+            $request = implode(' ', $random_numbers);
+        }
+        $answer = prompt('Question: ', $request);
+        line('Your answer %s', $answer);
         return $answer;
     }
-
-    function askQuestion(int $random_number)
+    function isCorrectAnswer($user_answer, $correct_answer): bool
     {
-        $answer =  prompt('Question: ', $random_number);
-        line('Your answer: %s', $answer);
-        return $answer;
+        return $user_answer == $correct_answer ? true : false;
     }
+
     /**
-     * Сравнивает ответ пользователя с правильным ответом.
-     * При правильном ответе возвращает 1, иначе ноль
-     * @param $user_answer
-     * @param $correct_answer
-     * @return int
+     * @param $is_correct_answer
+     * @param $user_name
+     * Печатает результат работы
      */
-    function isCorrectAnswer($user_answer, $correct_answer): int
+    function showUserResult($is_correct_answer, $user_name)
     {
-        $result = 0;
-        if (strcasecmp($user_answer, $correct_answer) == 0) {
-            line('Correct!');
-            $result = 1;
-        } else {
-            line('%s is wrong answer ;(', $user_answer);
-            line(' Correct answer was %s.', $correct_answer);
-        }
-        return $result;
-    }
-
-    /**
-     * Принимает на вход числа и операнд, возвращает результат.
-     * @param $random_numbers
-     * @param $operand
-     * @return string
-     */
-    function calculateCorrectAnswer($random_numbers, $operand): string
-    {
-        $correct_answer = '';
-        if ($operand == '+') {
-            $correct_answer = $random_numbers[0] + $random_numbers[1];
-        } elseif ($operand == '-') {
-            $correct_answer = $random_numbers[0] - $random_numbers[1];
-        } elseif ($operand == '*') {
-            $correct_answer = $random_numbers[0] * $random_numbers[1];
-        }
-        return $correct_answer;
-    }
-
-    function calculateSimpleNumber($is_simple_number): bool
-    {
-        $correct_answer = true;
-        for ($i = 2; $i < $is_simple_number; $i++) {
-            if ($is_simple_number % $i == 0) {
-                $correct_answer = false;
-                break;
-            }
-        }
-        return $correct_answer;
-    }
-
-    /**
-     *Вычисляет наибольший общий делитель
-     * @param $random_numbers
-     * @return string
-     */
-
-    function gcd($random_numbers)
-    {
-        [$number1, $number2] = $random_numbers;
-        while (true) {
-            if ($number1 == $number2) {
-                    return $number2;
-            }
-            if ($number1 > $number2) {
-                $number1 -= $number2;
-            } else {
-                $number2 -= $number1;
-            }
-        }
-    }
-
-    /**
-     * Формирует прогрессию из 10 элементов.
-     * На вход принимает 2 случайных числа: первый элемент + шаг
-     * @param $random_numbers
-     * @return array
-     */
-    function makeProgression($random_numbers): array
-    {
-        [$start_number, $step] = $random_numbers;
-        $progression[0] = $start_number;
-        for ($i = 1; $i < 10; $i++) {
-            $progression[$i] = $progression[$i - 1] + $step;
-        }
-        return $progression;
-    }
-
-    /**
-         * Выбирает произвольно математическую операцию.
-         * @return string
-         */
-    function chooseOperation(): string
-    {
-        $operands_array = ['+', '-', '*'];
-        $rand_key = array_rand($operands_array);
-        return $operands_array[$rand_key];
-    }
-
-        /**
-         * @param $all_correct
-         * @param $user_name
-         * Печатает результат работы
-         */
-    function showUserResult($all_correct, $user_name)
-    {
-        if ($all_correct == true) {
+        if ($is_correct_answer == true) {
             line('Congratulations, %s!', $user_name);
         } else {
             line("Let's try again, %s!", $user_name);
+        }
+    }
+
+
+    function Engine($game, $iterations)
+    {
+        $count_correct_answers = 0;
+        $user_name = welcome($game);
+        for ($i = 0; $i < $iterations; $i++) {
+            $random_numbers = [rand(1, 10), rand(1, 10)];
+            if ($game == 'brain-calc') {
+                $operand = chooseOperation();
+                $user_answer = askUser($game, $random_numbers, $operand);
+                $correct_answer = brainCalc($random_numbers, $operand);
+            } elseif ($game == 'brain-progression') {
+                $progression = makeProgression($random_numbers);
+                $missing_number = $random_numbers[0];
+                $user_progression = makeUserProgression($progression, $missing_number);
+                $user_answer = askUser($game, $user_progression);
+                $correct_answer = brainProgression($progression, $missing_number);
+            } elseif ($game == 'brain-prime') {
+                $user_answer = askUser($game, $random_numbers);
+                $correct_answer = brainPrime($random_numbers[0]);
+            } elseif ($game == 'brain-gcd') {
+                $user_answer = askUser($game, $random_numbers);
+                $correct_answer = brainGCD($random_numbers);
+            }
+            $is_correct_answer = isCorrectAnswer($user_answer, $correct_answer);
+            if ($is_correct_answer == true) {
+                $count_correct_answers = $count_correct_answers + 1;
+                line('Correct!');
+            } else {
+                line('%s is wrong answer ;(', $user_answer);
+                line('Correct answer was %s.', $correct_answer);
+                showUserResult($is_correct_answer, $user_name);
+                break;
+            }
+        }
+
+        if ($count_correct_answers == $iterations) {
+            $all_correct = true;
+            showUserResult($all_correct, $user_name);
         }
     }
 }

@@ -6,7 +6,12 @@
         "files": [
             "src/Games/Cli.php",
             "src/Games/Numbers.php",
-            "src/Games/Engine.php"
+            "src/Games/Engine.php",
+            "src/Games/brainCalc.php",
+            "src/Games/brainProgression.php",
+            "src/Games/brainGCD.php",
+            "src/Games/brainPrime.php"
+
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"

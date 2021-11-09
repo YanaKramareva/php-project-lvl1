@@ -10,26 +10,5 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\List_of_functions;
-use function cli\line;
-use function cli\prompt;
-
-$user_name = print_r(List_of_functions\greetUser(), true);
-line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    $random_number = rand(2, 100);
-    $user_answer = List_of_functions\askQuestion($random_number);
-        $calculated_answer = List_of_functions\calculateSimpleNumber($random_number);
-    if ($calculated_answer == true) {
-        $correct_answer = 'yes';
-    }
-    else {
-        $correct_answer = 'no';
-    }
-    $is_correct_answer = List_of_functions\isCorrectAnswer($user_answer, $correct_answer);
-
-    if ($is_correct_answer == 1) {
-        $all_correct = true;
-    } else {
-        $all_correct = false;
-    }
-print_r(List_of_functions\showUserResult($all_correct, $user_name));
+use Brain\Games\Engine;
+Engine\Engine('brain-prime', 3);

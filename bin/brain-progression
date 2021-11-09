@@ -10,42 +10,5 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\List_of_functions;
-use function cli\line;
-use function cli\prompt;
-
-$user_name = print_r(List_of_functions\greetUser(), true);
-line('What number is missing in the progression?');
-$count_correct_answers = 0;
-
-Function callProgression()
-{
-    $random_numbers = List_of_functions\chooseNumbers();
-    $progression = List_of_functions\makeProgression($random_numbers);
-    $missing_number = rand(1, 9);
-    $user_progression = [];
-    for ($i = 0, $length = count($progression); $i < $length; $i++) {
-        if ($i != $missing_number) {
-            $user_progression[$i] = $progression[$i];
-        } else {
-            $user_progression[$i] = '..';
-        }
-    }
-    $user_answer = List_of_functions\askToCalculateProgression($user_progression);
-    $isCorrectAnswer = List_of_functions\isCorrectAnswer($user_answer, $progression[$missing_number]);
-    return $isCorrectAnswer;
-}
-for ($i = 0; $i < 3; $i++) {
-    $isCorrectAnswer = callProgression();
-    if ($isCorrectAnswer == 1) {
-        $count_correct_answers = $count_correct_answers + 1;
-    } else {
-        $correct_answers = false;
-        print_r(List_of_functions\showUserResult($correct_answers, $user_name));
-        break;
-    }
-    if ($count_correct_answers == 3) {
-        $correct_answers = true;
-        print_r(List_of_functions\showUserResult($correct_answers, $user_name));
-    }
-}
+use Brain\Games\Engine;
+Engine\Engine('brain-progression', 3);
