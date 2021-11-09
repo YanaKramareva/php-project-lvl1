@@ -42,7 +42,7 @@ namespace Brain\Games\Engine {
         } elseif ($game == 'brain-progression') {
             $request = implode(' ', $random_numbers);
         }
-        $answer = prompt('Question: ', $request);
+        $answer = prompt('Question: ', $request,' ',true);
         line('Your answer %s', $answer);
         return $answer;
     }
@@ -94,8 +94,8 @@ namespace Brain\Games\Engine {
                 $count_correct_answers = $count_correct_answers + 1;
                 line('Correct!');
             } else {
-                line('%s is wrong answer ;(', $user_answer);
-                line('Correct answer was %s.', $correct_answer);
+                line("'%s' is wrong answer ;(", $user_answer);
+                line("Correct answer was '%s'.", $correct_answer);
                 showUserResult($is_correct_answer, $user_name);
                 break;
             }
