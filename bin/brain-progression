@@ -11,4 +11,6 @@ if (file_exists($autoloadPath1)) {
 }
 
 use Brain\Games\Engine;
-Engine\Engine('brain-progression', 3);
+
+$line = 'What number is missing in the progression?';
+Engine\Engine('brain-progression', 3, $line);

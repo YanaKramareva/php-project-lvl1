@@ -11,4 +11,5 @@ if (file_exists($autoloadPath1)) {
 }
 
 use Brain\Games\Engine;
-Engine\Engine('brain-prime', 3);
+$line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+Engine\Engine('brain-prime', 3, $line);

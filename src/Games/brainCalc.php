@@ -2,7 +2,7 @@
 
 namespace Brain\Games\brainCalc {
 
-    /**
+     /**
      * Выбирает произвольно математическую операцию.
      * @return string
      */

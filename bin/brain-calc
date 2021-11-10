@@ -12,4 +12,6 @@ if (file_exists($autoloadPath1)) {
 
 use Brain\Games\Engine;
 
-Engine\Engine('brain-calc', 3);
+$line = 'What is the result of the expression?';
+
+Engine\Engine('brain-calc', 3, $line);
