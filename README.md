@@ -1,3 +1,8 @@
+###Project Brain-Games
+This project contains logic games on php.
+#Requirements - PHP version 7.4; Composer. 
+#To use it, you need to download the project, run 'make install' command Makefile.
+#After installing Composer, you can run applications from Makefile.
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/YanaKramareva/php-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/YanaKramareva/php-project-lvl1/actions)
 <a href="https://codeclimate.com/github/YanaKramareva/php-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/2148437363dfeba796c9/maintainability" /></a>
