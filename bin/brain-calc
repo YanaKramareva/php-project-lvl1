@@ -10,8 +10,7 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Engine;
 
-$line = 'What is the result of the expression?';
+use function Brain\Games\brainCalc\EngineBrainCalc;
 
-Engine\Engine('brain-calc', 3, $line);
+EngineBrainCalc();

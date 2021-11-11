@@ -9,8 +9,6 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
-use Brain\Games\Engine;
+use Brain\Games\brainGCD;
 
-$line = 'Find the greatest common divisor of given numbers.';
-
-Engine\Engine('brain-gcd', 3, $line);
+brainGCD\EngineBrainGCD();

@@ -10,8 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Engine;
+use Brain\Games\Numbers;
 
-$line = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-Engine\Engine('brain-even', 3, $line);
+Numbers\EngineBrainEven();

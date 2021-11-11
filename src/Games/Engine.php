@@ -6,17 +6,11 @@ namespace Brain\Games\Engine {
     use function Brain\Games\brainCalc\chooseOperation;
     use function Brain\Games\brainGCD\brainGCD;
     use function Brain\Games\brainPrime\brainPrime;
-    use function Brain\Games\brainProgression\brainProgression;
     use function Brain\Games\brainProgression\makeProgression;
     use function Brain\Games\brainProgression\makeUserProgression;
     use function Brain\Games\Numbers\brainEven;
     use function cli\line;
     use function cli\prompt;
-
-    /**Приветствие, возврат имени пользователя
-     * @param $game
-     * @return string
-     */
 
     function welcome(string $line): string
     {
@@ -27,14 +21,8 @@ namespace Brain\Games\Engine {
         return $user_name;
     }
 
-    function askUser(string $game, array $random_numbers, string $operand = ' '): string
+    function askUser($request): string
     {
-        $request = $random_numbers[0] . $operand . $random_numbers[1];
-        if (($game == 'brain-prime') | ($game == 'brain-even')) {
-            $request = $random_numbers[0];
-        } elseif ($game == 'brain-progression') {
-            $request = implode(' ', $random_numbers);
-        }
         $answer = prompt('Question: ', $request, ' ', true);
         line('Your answer %s', $answer);
         return $answer;
@@ -59,11 +47,6 @@ namespace Brain\Games\Engine {
         return $answer;
     }
 
-    /**
-     * @param $is_correct_answer
-     * @param $user_name
-     * Печатает результат работы
-     */
     function showUserResult($is_correct_answer, $user_name)
     {
         if ($is_correct_answer == true) {
@@ -73,37 +56,36 @@ namespace Brain\Games\Engine {
         }
     }
 
-
     function Engine($game, $iterations, $line)
     {
         $count_correct_answers = 0;
         $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
             $random_numbers = [rand(1, 10), rand(1, 10)];
-            if ($game == 'brain-prime' | $game == 'brain-gcd' | $game == 'brain-even') {
-                $user_answer = askUser($game, $random_numbers);
-            }
             if ($game == 'brain-calc') {
                 $operand = chooseOperation();
-                $user_answer = askUser($game, $random_numbers, $operand);
+                $user_answer = askUser($random_numbers[0] . $operand . $random_numbers[1]);
                 $correct_answer = brainCalc($random_numbers, $operand);
             } elseif ($game == 'brain-progression') {
                 $progression = makeProgression($random_numbers);
-                $missing_number = $random_numbers[0];
+                $missing_number = rand(0, 9);
                 $user_progression = makeUserProgression($progression, $missing_number);
-                $user_answer = askUser($game, $user_progression);
-                $correct_answer = brainProgression($progression, $missing_number);
+                $user_answer = askUser($user_progression);
+                $correct_answer = $progression[$missing_number];
             } elseif ($game == 'brain-prime') {
-                $correct_answer = brainPrime($random_numbers[0]);
+                $user_answer = askUser($random_numbers[1]);
+                $correct_answer = brainPrime($random_numbers[1]);
             } elseif ($game == 'brain-gcd') {
+                $user_answer = askUser($random_numbers[0] . ' ' . $random_numbers[1]);
                 $correct_answer = brainGCD($random_numbers);
             } elseif ($game == 'brain-even') {
-                $correct_answer = brainEven($random_numbers[0]);
+                $user_answer = askUser($random_numbers[1]);
+                $correct_answer = brainEven($random_numbers[1]);
             }
             $is_correct_answer = isCorrectAnswer($user_answer, $correct_answer);
             $answerToUser = answerToUser($is_correct_answer, $user_answer, $correct_answer, $user_name);
             if ($answerToUser == true) {
-                $count_correct_answers = $count_correct_answers + 1;
+                $count_correct_answers += 1;
             } else {
                 break;
             }

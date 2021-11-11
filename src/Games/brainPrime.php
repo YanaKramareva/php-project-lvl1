@@ -2,6 +2,8 @@
 
 namespace Brain\Games\brainPrime;
 
+use Brain\Games\Engine;
+
 function brainPrime($is_simple_number): string
 {
     $correct_answer = 'yes';
@@ -12,4 +14,12 @@ function brainPrime($is_simple_number): string
         }
     }
     return $correct_answer;
+}
+
+function EngineBrainPrime()
+{
+    $game = 'brain-prime';
+    $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $iterations = 3;
+    Engine\Engine($game, $iterations, $line);
 }

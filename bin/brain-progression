@@ -10,7 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Engine;
+use Brain\Games\brainProgression;
 
-$line = 'What number is missing in the progression?';
-Engine\Engine('brain-progression', 3, $line);
+brainProgression\EngineBrainProgression();

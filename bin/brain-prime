@@ -10,6 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Engine;
-$line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-Engine\Engine('brain-prime', 3, $line);
+use Brain\Games\brainPrime;
+
+brainPrime\EngineBrainPrime();

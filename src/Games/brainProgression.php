@@ -2,6 +2,8 @@
 
 namespace Brain\Games\brainProgression {
 
+    use Brain\Games\Engine;
+
     /**
      * Формирует прогрессию из 10 элементов.
      * На вход принимает 2 случайных числа: первый элемент + шаг
@@ -18,7 +20,7 @@ namespace Brain\Games\brainProgression {
         return $progression;
     }
 
-    function makeUserProgression(array $progression, string $missing_number): array
+    function makeUserProgression(array $progression, string $missing_number): string
     {
         for ($i = 0, $length = count($progression); $i < $length; $i++) {
             if ($i != $missing_number) {
@@ -27,12 +29,15 @@ namespace Brain\Games\brainProgression {
                 $user_progression[$i] = '..';
             }
         }
-        return $user_progression;
+        return implode(' ', $user_progression);
     }
 
-    function brainProgression(array $progression, string $missing_number): string
+    function EngineBrainProgression()
     {
-               return $progression[$missing_number];
+        $game = 'brain-progression';
+        $line = 'What number is missing in the progression?';
+        $iterations = 3;
+        Engine\Engine($game, $iterations, $line);
     }
 
 }
