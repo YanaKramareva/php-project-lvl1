@@ -34,7 +34,7 @@ namespace Brain\Games\brainProgression {
         return implode(' ', $user_progression);
     }
 
-    function EngineBrainProgression(): ?int
+    function EngineBrainProgression()
     {
         $game = 'brain-progression';
         $line = 'What number is missing in the progression?';

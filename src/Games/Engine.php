@@ -61,6 +61,7 @@ namespace Brain\Games\Engine {
     {
         $user_answer = '';
         $correct_answer = '';
+        $is_correct_answer = true;
         $count_correct_answers = 0;
         $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
@@ -85,7 +86,6 @@ namespace Brain\Games\Engine {
                 $user_answer = askUser("$random_numbers[1]");
                 $correct_answer = brainEven($random_numbers[1]);
             }
-            $is_correct_answer = true;
             if (isCorrectAnswer($user_answer, $correct_answer) == false) {
                 $is_correct_answer = false;
             }

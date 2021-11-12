@@ -16,7 +16,7 @@ function brainPrime(int $is_simple_number): string
     return $correct_answer;
 }
 
-function EngineBrainPrime(): ?int
+function EngineBrainPrime()
 {
     $game = 'brain-prime';
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';

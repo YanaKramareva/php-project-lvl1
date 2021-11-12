@@ -28,7 +28,7 @@ namespace Brain\Games\brainCalc {
         return strval($correct_answer);
     }
 
-    function EngineBrainCalc(): ?int
+    function EngineBrainCalc()
     {
         $game = 'brain-calc';
         $line = 'What is the result of the expression?';

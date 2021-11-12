@@ -9,7 +9,7 @@ function brainEven(int $number): string
     return ($number % 2 == 0) ? 'yes' : 'no';
 }
 
-function EngineBrainEven(): ?int
+function EngineBrainEven()
 {
     $game = 'brain-even';
     $line = 'Answer "yes" if the number is even, otherwise answer "no".';
