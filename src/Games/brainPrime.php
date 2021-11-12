@@ -16,10 +16,11 @@ function brainPrime(int $is_simple_number): string
     return $correct_answer;
 }
 
-function EngineBrainPrime(): bool
+function EngineBrainPrime(): ?int
 {
     $game = 'brain-prime';
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $iterations = 3;
-    return Engine\Engine($game, $iterations, $line);
+    Engine\Engine($game, $iterations, $line);
+    return null;
 }

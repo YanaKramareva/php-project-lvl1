@@ -28,11 +28,12 @@ namespace Brain\Games\brainCalc {
         return strval($correct_answer);
     }
 
-    function EngineBrainCalc(): bool
+    function EngineBrainCalc(): ?int
     {
         $game = 'brain-calc';
         $line = 'What is the result of the expression?';
         $iterations = 3;
-        return Engine\Engine($game, $iterations, $line);
+         Engine\Engine($game, $iterations, $line);
+         return null;
     }
 }

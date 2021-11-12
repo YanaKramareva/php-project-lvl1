@@ -9,10 +9,11 @@ function brainEven(int $number): string
     return ($number % 2 == 0) ? 'yes' : 'no';
 }
 
-function EngineBrainEven(): bool
+function EngineBrainEven(): ?int
 {
     $game = 'brain-even';
     $line = 'Answer "yes" if the number is even, otherwise answer "no".';
     $iterations = 3;
-    return Engine\Engine($game, $iterations, $line);
+    Engine\Engine($game, $iterations, $line);
+    return null;
 }

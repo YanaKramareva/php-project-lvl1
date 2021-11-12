@@ -19,10 +19,11 @@ function brainGCD(array $random_numbers): int
     }
 }
 
-function EngineBrainGCD(): bool
+function EngineBrainGCD(): ?int
 {
     $game = 'brain-gcd';
     $line = 'Find the greatest common divisor of given numbers.';
     $iterations = 3;
-    return Engine\Engine($game, $iterations, $line);
+    Engine\Engine($game, $iterations, $line);
+    return null;
 }
