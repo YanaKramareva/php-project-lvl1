@@ -23,9 +23,8 @@ namespace Brain\Games\Engine {
 
     function askUser(string $request): string
     {
-        $answer = prompt('Question: ', '', $request, true);
-        line('Your answer: %s', $answer);
-        return $answer;
+        line("Question: $request");
+        return  prompt('Your answer');
     }
 
     function isCorrectAnswer(string $user_answer, string $correct_answer): bool
