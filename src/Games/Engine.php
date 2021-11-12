@@ -39,8 +39,7 @@ namespace Brain\Games\Engine {
             line('Correct!');
             $answer = true;
         } else {
-            line("'%s' is wrong answer ;(", $user_answer);
-            line("Correct answer was '%s'.", $correct_answer);
+            line("'$user_answer' is wrong answer ;(. Correct answer was '$correct_answer'.");
             showUserResult($is_correct_answer, $user_name);
             $answer = false;
         }
