@@ -59,9 +59,9 @@ namespace Brain\Games\Engine {
     function Engine($game, $iterations, $line)
     {
         $count_correct_answers = 0;
+        $random_numbers = [rand(1, 10), rand(1, 10)];
         $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
-            $random_numbers = [rand(1, 10), rand(1, 10)];
             if ($game == 'brain-calc') {
                 $operand = chooseOperation();
                 $user_answer = askUser($random_numbers[0] . $operand . $random_numbers[1]);
