@@ -12,4 +12,3 @@ if (file_exists($autoloadPath1)) {
 use Brain\Games\Cli;
 
 Cli\getName();
-
