@@ -56,7 +56,7 @@ namespace Brain\Games\Engine {
         return $is_correct_answer;
     }
 
-    function Engine(string $game, int $iterations, string $line): bool
+    function Engine(string $game, int $iterations, string $line)
     {
         $user_answer = '';
         $correct_answer = '';
@@ -99,6 +99,6 @@ namespace Brain\Games\Engine {
                 showUserResult($all_correct, $user_name);
             }
         }
-        return $is_correct_answer;
+        return null;
     }
 }
