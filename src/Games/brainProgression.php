@@ -12,6 +12,7 @@ namespace Brain\Games\brainProgression {
      */
     function makeProgression(array $random_numbers): array
     {
+        $progression = [];
         [$start_number, $step] = $random_numbers;
         $progression[0] = $start_number;
         for ($i = 1; $i < 10; $i++) {
@@ -20,8 +21,9 @@ namespace Brain\Games\brainProgression {
         return $progression;
     }
 
-    function makeUserProgression(array $progression, string $missing_number): string
+    function makeUserProgression(array $progression, int $missing_number): string
     {
+        $user_progression = [];
         for ($i = 0, $length = count($progression); $i < $length; $i++) {
             if ($i != $missing_number) {
                 $user_progression[$i] = $progression[$i];
@@ -32,12 +34,12 @@ namespace Brain\Games\brainProgression {
         return implode(' ', $user_progression);
     }
 
-    function EngineBrainProgression()
+    function EngineBrainProgression(): bool
     {
         $game = 'brain-progression';
         $line = 'What number is missing in the progression?';
         $iterations = 3;
-        Engine\Engine($game, $iterations, $line);
+        return Engine\Engine($game, $iterations, $line);
     }
 
 }

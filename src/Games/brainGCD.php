@@ -4,7 +4,7 @@ namespace Brain\Games\brainGCD;
 
 use Brain\Games\Engine;
 
-function brainGCD($random_numbers)
+function brainGCD(array $random_numbers): int
 {
     [$number1, $number2] = $random_numbers;
     while (true) {
@@ -19,10 +19,10 @@ function brainGCD($random_numbers)
     }
 }
 
-function EngineBrainGCD()
+function EngineBrainGCD(): bool
 {
     $game = 'brain-gcd';
     $line = 'Find the greatest common divisor of given numbers.';
     $iterations = 3;
-    Engine\Engine($game, $iterations, $line);
+    return Engine\Engine($game, $iterations, $line);
 }

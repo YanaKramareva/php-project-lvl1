@@ -21,7 +21,7 @@ namespace Brain\Games\brainCalc {
      * @param $operand
      * @return string
      */
-    function brainCalc($random_numbers, $operand): string
+    function brainCalc(array $random_numbers, string $operand): string
     {
         $correct_answer = '';
         if ($operand == '+') {
@@ -31,14 +31,14 @@ namespace Brain\Games\brainCalc {
         } elseif ($operand == '*') {
             $correct_answer = $random_numbers[0] * $random_numbers[1];
         }
-        return $correct_answer;
+        return "$correct_answer";
     }
 
-    function EngineBrainCalc()
+    function EngineBrainCalc(): bool
     {
         $game = 'brain-calc';
         $line = 'What is the result of the expression?';
         $iterations = 3;
-        Engine\Engine($game, $iterations, $line);
+        return Engine\Engine($game, $iterations, $line);
     }
 }

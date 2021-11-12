@@ -4,7 +4,7 @@ namespace Brain\Games\brainPrime;
 
 use Brain\Games\Engine;
 
-function brainPrime($is_simple_number): string
+function brainPrime(int $is_simple_number): string
 {
     $correct_answer = 'yes';
     for ($i = 2; $i < $is_simple_number; $i++) {
@@ -16,10 +16,10 @@ function brainPrime($is_simple_number): string
     return $correct_answer;
 }
 
-function EngineBrainPrime()
+function EngineBrainPrime(): bool
 {
     $game = 'brain-prime';
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $iterations = 3;
-    Engine\Engine($game, $iterations, $line);
+    return Engine\Engine($game, $iterations, $line);
 }

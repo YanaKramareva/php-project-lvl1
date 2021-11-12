@@ -4,15 +4,15 @@ namespace Brain\Games\Numbers;
 
 use Brain\Games\Engine;
 
-function brainEven($number): string
+function brainEven(int $number): string
 {
     return ($number % 2 == 0) ? 'yes' : 'no';
 }
 
-function EngineBrainEven()
+function EngineBrainEven(): bool
 {
     $game = 'brain-even';
     $line = 'Answer "yes" if the number is even, otherwise answer "no".';
     $iterations = 3;
-    Engine\Engine($game, $iterations, $line);
+    return Engine\Engine($game, $iterations, $line);
 }

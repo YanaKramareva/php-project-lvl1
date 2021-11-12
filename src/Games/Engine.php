@@ -21,14 +21,14 @@ namespace Brain\Games\Engine {
         return $user_name;
     }
 
-    function askUser($request): string
+    function askUser(string $request): string
     {
-        $answer = prompt('Question: ', false, $request, true);
+        $answer = prompt('Question: ', '', $request, true);
         line('Your answer: %s', $answer);
         return $answer;
     }
 
-    function isCorrectAnswer($user_answer, $correct_answer): bool
+    function isCorrectAnswer(string $user_answer, string $correct_answer): bool
     {
         return $user_answer == $correct_answer ? true : false;
     }
@@ -47,21 +47,22 @@ namespace Brain\Games\Engine {
         return $answer;
     }
 
-    function showUserResult($is_correct_answer, $user_name)
+    function showUserResult(bool $is_correct_answer, string $user_name): bool
     {
         if ($is_correct_answer == true) {
             line('Congratulations, %s!', $user_name);
         } else {
             line("Let's try again, %s!", $user_name);
         }
+        return $is_correct_answer;
     }
 
-    function Engine($game, $iterations, $line)
+    function Engine(string $game, int $iterations, string $line): bool
     {
         $count_correct_answers = 0;
-        $random_numbers = [rand(1, 10), rand(1, 10)];
         $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
+            $random_numbers = [rand(1, 10), rand(1, 10)];
             if ($game == 'brain-calc') {
                 $operand = chooseOperation();
                 $user_answer = askUser($random_numbers[0] . ' ' . $operand . ' ' . $random_numbers[1]);
@@ -94,5 +95,6 @@ namespace Brain\Games\Engine {
                 showUserResult($all_correct, $user_name);
             }
         }
+        return $is_correct_answer;
     }
 }
