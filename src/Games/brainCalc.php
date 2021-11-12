@@ -15,12 +15,6 @@ namespace Brain\Games\brainCalc {
         return $operands_array[$rand_key];
     }
 
-    /**
-     * Принимает на вход числа и операнд, возвращает результат.
-     * @param $random_numbers
-     * @param $operand
-     * @return string
-     */
     function brainCalc(array $random_numbers, string $operand): string
     {
         $correct_answer = '';
@@ -31,7 +25,7 @@ namespace Brain\Games\brainCalc {
         } elseif ($operand == '*') {
             $correct_answer = $random_numbers[0] * $random_numbers[1];
         }
-        return "$correct_answer";
+        return strval($correct_answer);
     }
 
     function EngineBrainCalc(): bool

@@ -59,6 +59,8 @@ namespace Brain\Games\Engine {
 
     function Engine(string $game, int $iterations, string $line): bool
     {
+        $user_answer = '';
+        $correct_answer = '';
         $count_correct_answers = 0;
         $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
@@ -74,16 +76,19 @@ namespace Brain\Games\Engine {
                 $user_answer = askUser($user_progression);
                 $correct_answer = $progression[$missing_number];
             } elseif ($game == 'brain-prime') {
-                $user_answer = askUser($random_numbers[1]);
+                $user_answer = askUser("$random_numbers[1]");
                 $correct_answer = brainPrime($random_numbers[1]);
             } elseif ($game == 'brain-gcd') {
                 $user_answer = askUser($random_numbers[0] . ' ' . $random_numbers[1]);
                 $correct_answer = brainGCD($random_numbers);
             } elseif ($game == 'brain-even') {
-                $user_answer = askUser($random_numbers[1]);
+                $user_answer = askUser("$random_numbers[1]");
                 $correct_answer = brainEven($random_numbers[1]);
             }
-            $is_correct_answer = isCorrectAnswer($user_answer, $correct_answer);
+            $is_correct_answer = true;
+            if (isCorrectAnswer($user_answer, $correct_answer) == false) {
+                $is_correct_answer = false;
+            }
             $answerToUser = answerToUser($is_correct_answer, $user_answer, $correct_answer, $user_name);
             if ($answerToUser == true) {
                 $count_correct_answers += 1;
