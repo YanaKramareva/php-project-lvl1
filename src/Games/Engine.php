@@ -23,7 +23,7 @@ namespace Brain\Games\Engine {
 
     function askUser($request): string
     {
-        $answer = prompt('Question: ', $request, ' ', true);
+        $answer = prompt('Question: ', false, $request, true);
         line('Your answer %s', $answer);
         return $answer;
     }
