@@ -20,7 +20,7 @@ function EngineBrainPrime()
 {
     $game = 'brain-prime';
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $iterations = 1;
+    $iterations = 3;
     $user_name = Engine\welcome($line);
     $all_correct_answers = Engine\Engine($game, $iterations, $user_name);
     Engine\showUserResult($all_correct_answers, $user_name);
