@@ -64,7 +64,7 @@ namespace Brain\Games\Engine {
         for ($i = 0; $i < $iterations; $i++) {
             if ($game == 'brain-calc') {
                 $operand = chooseOperation();
-                $user_answer = askUser($random_numbers[0] .' '. $operand .' '. $random_numbers[1]);
+                $user_answer = askUser($random_numbers[0] . ' ' . $operand . ' ' . $random_numbers[1]);
                 $correct_answer = brainCalc($random_numbers, $operand);
             } elseif ($game == 'brain-progression') {
                 $progression = makeProgression($random_numbers);
