@@ -33,7 +33,9 @@ namespace Brain\Games\brainCalc {
         $game = 'brain-calc';
         $line = 'What is the result of the expression?';
         $iterations = 3;
-         Engine\Engine($game, $iterations, $line);
-         return null;
+        $user_name = Engine\welcome($line);
+        $all_correct_answers = Engine\Engine($game, $iterations, $user_name);
+        Engine\showUserResult($all_correct_answers, $user_name);
+        return null;
     }
 }

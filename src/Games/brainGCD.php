@@ -24,6 +24,8 @@ function EngineBrainGCD()
     $game = 'brain-gcd';
     $line = 'Find the greatest common divisor of given numbers.';
     $iterations = 3;
-    Engine\Engine($game, $iterations, $line);
+    $user_name = Engine\welcome($line);
+    $all_correct_answers = Engine\Engine($game, $iterations, $user_name);
+    Engine\showUserResult($all_correct_answers, $user_name);
     return null;
 }

@@ -21,6 +21,7 @@ function EngineBrainPrime()
     $game = 'brain-prime';
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $iterations = 1;
-    Engine\Engine($game, $iterations, $line);
+    $user_name = Engine\welcome($line);
+    Engine\Engine($game, $iterations, $user_name);
     return null;
 }

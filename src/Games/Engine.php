@@ -39,7 +39,6 @@ namespace Brain\Games\Engine {
             $answer = true;
         } else {
             line("'$user_answer' is wrong answer ;(. Correct answer was '$correct_answer'.");
-            showUserResult($is_correct_answer, $user_name);
             $answer = false;
         }
         return $answer;
@@ -55,13 +54,12 @@ namespace Brain\Games\Engine {
         return $is_correct_answer;
     }
 
-    function Engine(string $game, int $iterations, string $line)
+    function Engine(string $game, int $iterations, string $user_name): bool
     {
         $user_answer = '';
         $correct_answer = '';
         $is_correct_answer = true;
         $count_correct_answers = 0;
-        $user_name = welcome($line);
         for ($i = 0; $i < $iterations; $i++) {
             $random_numbers = [rand(1, 10), rand(1, 10)];
             if ($game == 'brain-calc') {
@@ -93,11 +91,7 @@ namespace Brain\Games\Engine {
             } else {
                 break;
             }
-            if ($count_correct_answers == $iterations) {
-                $all_correct = true;
-                showUserResult($all_correct, $user_name);
-            }
         }
-        return null;
+        return $count_correct_answers == $iterations;
     }
 }
