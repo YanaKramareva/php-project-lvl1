@@ -34,15 +34,14 @@ namespace Brain\Games\brainProgression {
         return implode(' ', $user_progression);
     }
 
-    function EngineBrainProgression()
+    function EngineBrainProgression(): void
     {
         $game = 'brain-progression';
         $line = 'What number is missing in the progression?';
         $iterations = 3;
         $user_name = Engine\welcome($line);
-        $all_correct_answers = Engine\Engine($game, $iterations, $user_name);
+        $all_correct_answers = Engine\Engine($game, $iterations);
         Engine\showUserResult($all_correct_answers, $user_name);
-        return null;
     }
 
 }
