@@ -2,14 +2,6 @@
 
 namespace Brain\Games\brainProgression {
 
-    use Brain\Games\Engine;
-
-    /**
-     * Формирует прогрессию из 10 элементов.
-     * На вход принимает 2 случайных числа: первый элемент + шаг
-     * @param array $random_numbers
-     * @return array
-     */
     function makeProgression(array $random_numbers): array
     {
         $progression = [];
@@ -33,15 +25,4 @@ namespace Brain\Games\brainProgression {
         }
         return implode(' ', $user_progression);
     }
-
-    function EngineBrainProgression(): void
-    {
-        $game = 'brain-progression';
-        $line = 'What number is missing in the progression?';
-        $iterations = 3;
-        $user_name = Engine\welcome($line);
-        $all_correct_answers = Engine\Engine($game, $iterations);
-        Engine\showUserResult($all_correct_answers, $user_name);
-    }
-
 }

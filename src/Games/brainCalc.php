@@ -2,12 +2,6 @@
 
 namespace Brain\Games\brainCalc {
 
-    use Brain\Games\Engine;
-
-    /**
-     * Выбирает произвольно математическую операцию.
-     * @return string
-     */
     function chooseOperation(): string
     {
         $operands_array = ['+', '-', '*'];
@@ -26,15 +20,5 @@ namespace Brain\Games\brainCalc {
             $correct_answer = $random_numbers[0] * $random_numbers[1];
         }
         return strval($correct_answer);
-    }
-
-    function EngineBrainCalc(): void
-    {
-        $game = 'brain-calc';
-        $line = 'What is the result of the expression?';
-        $iterations = 3;
-        $user_name = Engine\welcome($line);
-        $all_correct_answers = Engine\Engine($game, $iterations);
-        Engine\showUserResult($all_correct_answers, $user_name);
     }
 }

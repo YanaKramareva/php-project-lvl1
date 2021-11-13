@@ -10,6 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\brainPrime;
+use Brain\Games\Engine;
 
-brainPrime\EngineBrainPrime();
+Engine\Engine('brain-prime', 3);

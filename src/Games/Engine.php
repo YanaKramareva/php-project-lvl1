@@ -12,12 +12,22 @@ namespace Brain\Games\Engine {
     use function cli\line;
     use function cli\prompt;
 
-    function welcome(string $line): string
+    function welcome(string $game): string
     {
         line('Welcome to the Brain Game!');
         $user_name = prompt('May I have your name?');
         line('Hello, %s!', $user_name);
-        line($line);
+        if ($game == 'brain-even') {
+            line('Answer "yes" if the number is even, otherwise answer "no".');
+        } elseif ($game == 'brain-prime') {
+            line('Answer "yes" if given number is prime. Otherwise answer "no".');
+        } elseif ($game == 'brain-calc') {
+            line('What is the result of the expression?');
+        } elseif ($game == 'brain-progression') {
+            line('What number is missing in the progression?');
+        } elseif ($game == 'brain-gcd') {
+            line('Find the greatest common divisor of given numbers.');
+        }
         return $user_name;
     }
 
@@ -81,8 +91,9 @@ namespace Brain\Games\Engine {
         return $is_correct_answer;
     }
 
-    function Engine(string $game, int $iterations): bool
+    function Engine(string $game, int $iterations): void
     {
+        $user_name = welcome($game);
         $count_correct_answers = 0;
         for ($i = 0; $i < $iterations; $i++) {
             $random_numbers = [rand(1, 10), rand(1, 10)];
@@ -97,6 +108,7 @@ namespace Brain\Games\Engine {
                 break;
             }
         }
-        return $count_correct_answers == $iterations;
+        $results = (($count_correct_answers == $iterations) ? true : false);
+        showUserResult($results, $user_name);
     }
 }
