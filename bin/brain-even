@@ -10,6 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Engine;
+use Brain\src\Engine;
 
 Engine\Engine('brain-even', 3);

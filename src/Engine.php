@@ -1,6 +1,6 @@
 <?php
 
-namespace Brain\Games\Engine {
+namespace Brain\src\Engine {
 
     use function Brain\Games\brainCalc\brainCalc;
     use function Brain\Games\brainCalc\chooseOperation;

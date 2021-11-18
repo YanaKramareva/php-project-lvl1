@@ -4,9 +4,9 @@
     "license": "MIT",
     "autoload": {
         "files": [
-            "src/Games/Cli.php",
+            "src/Cli.php",
             "src/Games/Numbers.php",
-            "src/Games/Engine.php",
+            "src/Engine.php",
             "src/Games/brainCalc.php",
             "src/Games/brainProgression.php",
             "src/Games/brainGCD.php",

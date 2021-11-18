@@ -9,6 +9,6 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
-use Brain\Games\Engine;
+use Brain\src\Engine;
 
 Engine\Engine('brain-gcd', 3);

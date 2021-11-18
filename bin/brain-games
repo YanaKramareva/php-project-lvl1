@@ -9,6 +9,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\Games\Cli;
+use Brain\src\Cli;
 
 Cli\getName();
