@@ -7,12 +7,12 @@ use function Brain\src\Engine\Engine;
 use function Brain\src\Engine\showUserResult;
 use function Brain\src\Engine\welcome;
 
-function calculateCorrectAnswer(array $random_numbers): int
+function calculateCorrectAnswer(array $random_numbers): string
 {
     [$number1, $number2] = $random_numbers;
     while (true) {
         if ($number1 == $number2) {
-            return $number2;
+            return "$number2";
         }
         if ($number1 > $number2) {
             $number1 -= $number2;
