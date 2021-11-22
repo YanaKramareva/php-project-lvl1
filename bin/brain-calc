@@ -10,6 +10,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use Brain\src\Engine;
+use Brain\Games\brainCalc;
 
-Engine\Engine('brain-calc', 3);
+brainCalc\brainCalc(3);

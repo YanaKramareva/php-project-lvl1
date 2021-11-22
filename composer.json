@@ -11,7 +11,6 @@
             "src/Games/brainProgression.php",
             "src/Games/brainGCD.php",
             "src/Games/brainPrime.php"
-
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -30,13 +29,13 @@
         "bin/brain-gcd",
         "bin/brain-progression",
         "bin/brain-prime"
-
     ],
     "require": {
         "wp-cli/php-cli-tools": "^0.11.13"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.6"
+        "squizlabs/php_codesniffer": "^3.6",
+        "phpstan/phpstan": "^1.1"
     },
     "scripts": {
         "phpcs": "phpcs"

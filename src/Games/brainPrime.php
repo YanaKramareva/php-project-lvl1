@@ -2,7 +2,9 @@
 
 namespace Brain\Games\brainPrime;
 
-function brainPrime(int $is_simple_number): string
+use Brain\src\Engine;
+
+function calculateCorrectAnswer(int $is_simple_number): string
 {
     $correct_answer = 'yes';
     if ($is_simple_number == 1) {
@@ -15,4 +17,23 @@ function brainPrime(int $is_simple_number): string
         }
     }
     return $correct_answer;
+}
+
+function brainPrime(int $iterations): void
+{
+    $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $user_name = Engine\welcome($line);
+    $count_correct_answers = 0;
+    for ($i = 0; $i < $iterations; $i++) {
+        $random_number = rand(1, 10);
+        $user_answer = Engine\askUser("$random_number");
+        $correct_answer = calculateCorrectAnswer($random_number);
+        if (Engine\Engine($user_answer, $correct_answer) == true) {
+            $count_correct_answers += 1;
+        } else {
+            break;
+        }
+    }
+    $results = (($count_correct_answers == $iterations) ? true : false);
+    Engine\showUserResult($results, $user_name);
 }
