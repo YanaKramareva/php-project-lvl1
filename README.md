@@ -3,14 +3,13 @@
 ### Requirements - PHP version 7.4; Composer. 
 ### For using required to download the project, run 'make install' command from Makefile.
 ### After installing Composer required to run applications by using commands from Makefile.
-###To install Composer use the command:
-###install
+### To install Composer use the command:  install
 ### To start games use the commands:
-###brain-games
-###brain-even
-###brain-calc
-###brain-gcd
-###brain-progression
+### brain-games
+### brain-even
+### brain-calc
+### brain-gcd
+### brain-progression
 ### brain-prime
 
 ### Hexlet tests and linter status:
