@@ -12,9 +12,9 @@ function calculateCorrectAnswer(array $random_numbers): string
             return "$number2";
         }
         if ($number1 > $number2) {
-            $number1 = $number1 - $number2;
+            $number1 -= $number2;
         } else {
-            $number2 = $number2 - $number1;
+            $number2 -= $number1;
         }
     }
 }
@@ -25,7 +25,7 @@ function brainGCD(int $iterations): void
     $rounds = [];
     for ($i = 0; $i < $iterations; $i++) {
         $random_numbers = [rand(1, 10), rand(1, 10)];
-        $question = "$random_numbers[0]  $random_numbers[1]";
+        $question = "$random_numbers[0] $random_numbers[1]";
         $answer = calculateCorrectAnswer($random_numbers);
         $rounds[$i] = [$question, $answer];
     }
