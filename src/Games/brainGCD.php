@@ -12,9 +12,9 @@ function calculateCorrectAnswer(array $random_numbers): string
             return "$number2";
         }
         if ($number1 > $number2) {
-            $number1 -= $number2;
+            $number1 = $number1 - $number2;
         } else {
-            $number2 -= $number1;
+            $number2 = $number2 - $number1;
         }
     }
 }
