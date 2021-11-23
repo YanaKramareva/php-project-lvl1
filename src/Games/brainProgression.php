@@ -2,10 +2,7 @@
 
 namespace Brain\Games\brainProgression {
 
-    use function Brain\src\Engine\askUser;
     use function Brain\src\Engine\Engine;
-    use function Brain\src\Engine\showUserResult;
-    use function Brain\src\Engine\welcome;
 
     function makeProgression(array $random_numbers): array
     {
@@ -34,22 +31,16 @@ namespace Brain\Games\brainProgression {
     function brainProgression(int $iterations): void
     {
         $line = 'What number is missing in the progression?';
-        $user_name = welcome($line);
-        $count_correct_answers = 0;
+            $rounds = [];
         for ($i = 0; $i < $iterations; $i++) {
             $random_numbers = [rand(1, 10), rand(1, 10)];
             $progression = makeProgression($random_numbers);
             $missing_number = rand(0, 9);
-            $user_progression = makeUserProgression($progression, $missing_number);
-            $user_answer = askUser($user_progression);
-            $correct_answer = $progression[$missing_number];
-            if (Engine($user_answer, $correct_answer) == true) {
-                $count_correct_answers += 1;
-            } else {
-                break;
-            }
+            $question = makeUserProgression($progression, $missing_number);
+            $answer = $progression[$missing_number];
+            $rounds[$i] = [$question, $answer];
         }
-        $results = (($count_correct_answers == $iterations) ? true : false);
-        showUserResult($results, $user_name);
+        Engine($line, $rounds);
     }
+
 }

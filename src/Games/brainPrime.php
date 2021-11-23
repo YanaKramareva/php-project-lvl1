@@ -22,18 +22,12 @@ function calculateCorrectAnswer(int $is_simple_number): string
 function brainPrime(int $iterations): void
 {
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $user_name = Engine\welcome($line);
-    $count_correct_answers = 0;
+    $rounds = [];
     for ($i = 0; $i < $iterations; $i++) {
         $random_number = rand(1, 10);
-        $user_answer = Engine\askUser("$random_number");
-        $correct_answer = calculateCorrectAnswer($random_number);
-        if (Engine\Engine($user_answer, $correct_answer) == true) {
-            $count_correct_answers += 1;
-        } else {
-            break;
-        }
+        $question = "$random_number";
+        $answer = calculateCorrectAnswer($random_number);
+        $rounds[$i] = [$question, $answer];
     }
-    $results = (($count_correct_answers == $iterations) ? true : false);
-    Engine\showUserResult($results, $user_name);
+    Engine\Engine($line, $rounds);
 }
