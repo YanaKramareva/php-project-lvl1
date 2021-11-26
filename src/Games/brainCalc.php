@@ -39,7 +39,7 @@ function brainCalc(): void
         $operand = chooseOperand();
         $randomNumber1 = rand(1, 10);
         $randomNumber2 = rand(1, 10);
-        $question = "{$randomNumber1}{$operand}{$randomNumber2}";
+        $question = "{$randomNumber1} {$operand} {$randomNumber2}";
         $answer = calculateCorrectAnswer($randomNumber1, $randomNumber2, $operand);
         $rounds[$i] = [$question, $answer];
     }
