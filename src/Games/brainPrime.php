@@ -4,30 +4,32 @@ namespace Brain\Games\brainPrime;
 
 use Brain\src\Engine;
 
-function calculateCorrectAnswer(int $is_simple_number): string
+const ROUNDS_COUNT = 3;
+
+function calculateCorrectAnswer(int $isSimpleNumber): string
 {
-    $correct_answer = 'yes';
-    if ($is_simple_number == 1) {
-        $correct_answer = 'no';
+    $correctAnswer = 'yes';
+    if ($isSimpleNumber < 2) {
+        $correctAnswer = 'no';
     }
-    for ($i = 2; $i < $is_simple_number; $i++) {
-        if ($is_simple_number % $i == 0) {
-            $correct_answer = 'no';
+    for ($i = 2; $i < $isSimpleNumber; $i++) {
+        if ($isSimpleNumber % $i == 0) {
+            $correctAnswer = 'no';
             break;
         }
     }
-    return $correct_answer;
+    return $correctAnswer;
 }
 
-function brainPrime(int $iterations): void
+function brainPrime(): void
 {
     $line = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $rounds = [];
-    for ($i = 0; $i < $iterations; $i++) {
-        $random_number = rand(1, 10);
-        $question = "$random_number";
-        $answer = calculateCorrectAnswer($random_number);
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $randomNumber = rand(1, 10);
+        $question = (string) $randomNumber;
+        $answer = calculateCorrectAnswer($randomNumber);
         $rounds[$i] = [$question, $answer];
     }
-    Engine\Engine($line, $rounds);
+    Engine\engine($line, $rounds);
 }
