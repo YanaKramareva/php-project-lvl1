@@ -1,10 +1,6 @@
 <?php
 
-namespace Brain\Games\brainProgression;
-
-    use function Brain\src\Engine\engine;
-
-    const ROUNDS_COUNT = 3;
+namespace Brain;
 
 function makeProgression(int $startNumber, int $step): array
 {
@@ -31,7 +27,7 @@ function makeUserProgression(array $progression, int $missingNumber): string
 
 function brainProgression(): void
 {
-    $line = 'What number is missing in the progression?';
+    $startQuestion = 'What number is missing in the progression?';
         $rounds = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomNumber1 = rand(1, 10);
@@ -42,5 +38,5 @@ function brainProgression(): void
         $answer = $progression[$missingNumber];
         $rounds[$i] = [$question, $answer];
     }
-    engine($line, $rounds);
+    engine($startQuestion, $rounds);
 }

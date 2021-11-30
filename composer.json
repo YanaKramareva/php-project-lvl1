@@ -7,14 +7,11 @@
             "src/Cli.php",
             "src/Games/Numbers.php",
             "src/Engine.php",
-            "src/Games/brainCalc.php",
-            "src/Games/brainProgression.php",
-            "src/Games/brainGCD.php",
-            "src/Games/brainPrime.php"
-        ],
-        "psr-4": {
-            "Hexlet\\Code\\": "src/"
-        }
+            "src/Games/BrainCalc.php",
+            "src/Games/BrainProgression.php",
+            "src/Games/BrainGCD.php",
+            "src/Games/BrainPrime.php"
+        ]
     },
     "authors": [
         {
