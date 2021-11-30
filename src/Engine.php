@@ -22,7 +22,6 @@ function engine(string $startQuestion, array $rounds): void
             $isCorrectAnswer = true;
             line('Correct!');
         } else {
-            $isCorrectAnswer = false;
             line("{$userAnswer} is wrong answer ;(. Correct answer was {$answer}.");
             break;
         }
