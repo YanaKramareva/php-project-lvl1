@@ -1,8 +1,12 @@
 <?php
 
-namespace Brain;
+namespace BrainGames\Games\BrainGCD;
 
-function calculateCorrectAnswerGCD(int $randomNumber1, int $randomNumber2): string
+use function BrainGames\Engine\engineGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
+
+function calculateGCD(int $randomNumber1, int $randomNumber2): string
 {
     while (true) {
         if ($randomNumber1 == $randomNumber2) {
@@ -16,7 +20,7 @@ function calculateCorrectAnswerGCD(int $randomNumber1, int $randomNumber2): stri
     }
 }
 
-function brainGCD(): void
+function startGame(): void
 {
     $startQuestion = 'Find the greatest common divisor of given numbers.';
     $rounds = [];
@@ -24,8 +28,8 @@ function brainGCD(): void
         $randomNumber1 = rand(1, 10);
         $randomNumber2 = rand(1, 10);
         $question = "{$randomNumber1} {$randomNumber2}";
-        $answer = calculateCorrectAnswerGCD($randomNumber1, $randomNumber2);
+        $answer = calculateGCD($randomNumber1, $randomNumber2);
         $rounds[$i] = [$question, $answer];
     }
-    engine($startQuestion, $rounds);
+    engineGame($startQuestion, $rounds);
 }

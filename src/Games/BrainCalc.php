@@ -1,6 +1,10 @@
 <?php
 
-namespace Brain;
+namespace BrainGames\Games\BrainCalc;
+
+use function BrainGames\Engine\engineGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 function chooseOperand(): string
 {
@@ -23,7 +27,7 @@ function calculateCorrectAnswer(int $randomNumber1, int $randomNumber2, string $
     }
 }
 
-function brainCalc(): void
+function startGame(): void
 {
     $functionQuestion = 'What is the result of the expression?';
     $rounds = [];
@@ -35,5 +39,5 @@ function brainCalc(): void
         $answer = calculateCorrectAnswer($randomNumber1, $randomNumber2, $operand);
         $rounds[$i] = [$question, $answer];
     }
-    engine($functionQuestion, $rounds);
+    engineGame($functionQuestion, $rounds);
 }

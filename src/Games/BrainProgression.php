@@ -1,9 +1,15 @@
 <?php
 
-namespace Brain;
+namespace BrainGames\Games\BrainProgression;
 
-function makeProgression(int $startNumber, int $step): array
+use function BrainGames\Engine\engineGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
+
+function makeProgression(): array
 {
+    $startNumber = rand(1, 10);
+    $step = rand(1, 10);
     $progression = [];
     $progression[0] = $startNumber;
     for ($i = 1; $i < 10; $i++) {
@@ -12,31 +18,23 @@ function makeProgression(int $startNumber, int $step): array
     return $progression;
 }
 
-function makeUserProgression(array $progression, int $missingNumber): string
+function hideNumberProgression(array $progression, int $missingNumber): string
 {
-    $userProgression = [];
-    for ($i = 0, $length = count($progression); $i < $length; $i++) {
-        if ($i != $missingNumber) {
-            $userProgression[$i] = $progression[$i];
-        } else {
-            $userProgression[$i] = '..';
-        }
-    }
-    return implode(' ', $userProgression);
+    $hideNumberProgression = $progression;
+           $hideNumberProgression[$missingNumber] = '..';
+    return implode(' ', $hideNumberProgression);
 }
 
-function brainProgression(): void
+function startGame(): void
 {
     $startQuestion = 'What number is missing in the progression?';
         $rounds = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $randomNumber1 = rand(1, 10);
-        $randomNumber2 = rand(1, 10);
-        $progression = makeProgression($randomNumber1, $randomNumber2);
+        $progression = makeProgression();
         $missingNumber = rand(0, 9);
-        $question = makeUserProgression($progression, $missingNumber);
+        $question = hideNumberProgression($progression, $missingNumber);
         $answer = $progression[$missingNumber];
         $rounds[$i] = [$question, $answer];
     }
-    engine($startQuestion, $rounds);
+    engineGame($startQuestion, $rounds);
 }

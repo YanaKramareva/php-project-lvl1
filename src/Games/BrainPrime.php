@@ -1,31 +1,35 @@
 <?php
 
-namespace Brain;
+namespace BrainGames\Games\BrainPrime;
 
-function calculateCorrectAnswerPrime(int $isSimpleNumber): string
+use function BrainGames\Engine\engineGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
+
+function isPrimeNumber(int $isSimpleNumber): bool
 {
-    $correctAnswer = 'yes';
+    $correctAnswer = true;
     if ($isSimpleNumber < 2) {
-        $correctAnswer = 'no';
+        $correctAnswer = false;
     }
     for ($i = 2; $i < $isSimpleNumber; $i++) {
         if ($isSimpleNumber % $i == 0) {
-            $correctAnswer = 'no';
+            $correctAnswer = false;
             break;
         }
     }
     return $correctAnswer;
 }
 
-function brainPrime(): void
+function startGame(): void
 {
     $startQuestion = 'Answer "yes" if given number is prime. Otherwise answer "no".';
     $rounds = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomNumber = rand(1, 10);
         $question = (string) $randomNumber;
-        $answer = calculateCorrectAnswerPrime($randomNumber);
+         $answer = (isPrimeNumber($randomNumber) === true) ? 'yes' : 'no';
         $rounds[$i] = [$question, $answer];
     }
-    engine($startQuestion, $rounds);
+    engineGame($startQuestion, $rounds);
 }
