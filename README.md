@@ -5,19 +5,19 @@
 
 # **Project Brain-Games**
 
-### Description
+## Description
 
 This project contains logic games on php.
 
-### Requirements 
+## Requirements 
 1. PHP version 7.4 
 2. Composer
 
-### Installation
+## Installation
 For using required to download the project, run 'make install' command from Makefile to install Composer.
 After installing Composer required to run applications. 
 
-### Start
+## Start
 
 ###To start games use the commands:
 #####*make brain-games*
@@ -27,7 +27,7 @@ After installing Composer required to run applications.
 #####*make brain-progression*
 #####*make brain-prime*
 
-###Examples asciinema:
+##*Examples asciinema*:
 
 <a href="https://asciinema.org/a/452508" target="_blank"><img src="https://asciinema.org/a/452508.svg" /></a>
 <a href="https://asciinema.org/a/452509" target="_blank"><img src="https://asciinema.org/a/452509.svg" /></a>
