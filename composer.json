@@ -5,7 +5,7 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Games/Numbers.php",
+            "src/Games/BrainNumbers.php",
             "src/Engine.php",
             "src/Games/BrainCalc.php",
             "src/Games/BrainProgression.php",
