@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\BrainCalc;
 
-use function BrainGames\Engine\engineGame;
+use function BrainGames\Engine\runGame;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -39,5 +39,5 @@ function startGame(): void
         $answer = calculateCorrectAnswer($randomNumber1, $randomNumber2, $operand);
         $rounds[$i] = [$question, $answer];
     }
-    engineGame($functionQuestion, $rounds);
+    runGame($functionQuestion, $rounds);
 }

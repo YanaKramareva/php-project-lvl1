@@ -2,23 +2,22 @@
 
 namespace BrainGames\Games\BrainPrime;
 
-use function BrainGames\Engine\engineGame;
+use function BrainGames\Engine\runGame;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
-function isPrimeNumber(int $isSimpleNumber): bool
+function isPrimeNumber(int $number): bool
 {
-    $correctAnswer = true;
-    if ($isSimpleNumber < 2) {
-        $correctAnswer = false;
+
+    if ($number < 2) {
+        return false;
     }
-    for ($i = 2; $i < $isSimpleNumber; $i++) {
-        if ($isSimpleNumber % $i == 0) {
-            $correctAnswer = false;
-            break;
+    for ($i = 2; $i < $number; $i++) {
+        if ($number % $i === 0) {
+            return false;
         }
     }
-    return $correctAnswer;
+    return true;
 }
 
 function startGame(): void
@@ -31,5 +30,5 @@ function startGame(): void
          $answer = (isPrimeNumber($randomNumber) === true) ? 'yes' : 'no';
         $rounds[$i] = [$question, $answer];
     }
-    engineGame($startQuestion, $rounds);
+    runGame($startQuestion, $rounds);
 }

@@ -7,28 +7,35 @@ use function cli\prompt;
 
 const ROUNDS_COUNT = 3;
 
-function engineGame(string $startQuestion, array $rounds): void
+function askQuestion(array $round, string $userName): bool
 {
-    $roundsAnswer = false;
+    [$question, $answer] = $round;
+    line("Question: {$question}");
+    $userAnswer = prompt('Your answer');
+    if ($userAnswer != $answer) {
+        line("{$userAnswer} is wrong answer ;(. Correct answer was {$answer}.");
+        line("Let's try again, %s!", $userName);
+        return false;
+    } else {
+        line('Correct!');
+        return true;
+    }
+}
+
+function runGame(string $startQuestion, array $rounds): void
+{
     line('Welcome to the Brain Game!');
     $userName = prompt('May I have your name?');
     line('Hello, %s!', $userName);
     line($startQuestion);
+    $roundAnswer = false;
     foreach ($rounds as $round) {
-        $roundsAnswer = false;
-        [$question, $answer] = $round;
-        line("Question: {$question}");
-        $userAnswer = prompt('Your answer');
-        if ($userAnswer != $answer) {
-            line("{$userAnswer} is wrong answer ;(. Correct answer was {$answer}.");
-            line("Let's try again, %s!", $userName);
+        $roundAnswer = askQuestion($round, $userName);
+        if (!$roundAnswer) {
             break;
-        } else {
-            $roundsAnswer = true;
-            line('Correct!');
         }
     }
-    if ($roundsAnswer === true) {
+    if ($roundAnswer) {
         line('Congratulations, %s!', $userName);
     }
 }

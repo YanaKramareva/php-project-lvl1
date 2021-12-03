@@ -19,15 +19,15 @@ After installing Composer required to run applications.
 
 ## Start
 
-###To start games use the commands:
-#####*make brain-games*
-#####*make brain-even*
-#####*make brain-calc*
-#####*make brain-gcd*
-#####*make brain-progression*
-#####*make brain-prime*
+### To start games use the commands:
+##### *make brain-games*
+##### *make brain-even*
+##### *make brain-calc*
+##### *make brain-gcd*
+##### *make brain-progression*
+##### *make brain-prime*
 
-##*Examples asciinema*:
+## *Examples asciinema*:
 
 <a href="https://asciinema.org/a/452508" target="_blank"><img src="https://asciinema.org/a/452508.svg" /></a>
 <a href="https://asciinema.org/a/452509" target="_blank"><img src="https://asciinema.org/a/452509.svg" /></a>

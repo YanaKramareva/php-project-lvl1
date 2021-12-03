@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\BrainNumbers;
 
-use function BrainGames\Engine\engineGame;
+use function BrainGames\Engine\runGame;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
@@ -17,9 +17,8 @@ function startGame(): void
     $rounds = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomNumber = rand(1, 10);
-        $question = (string) $randomNumber;
         $answer = (isEvenNumber($randomNumber) === true ? 'yes' : 'no');
-        $rounds[$i] = [$question, $answer];
+        $rounds[$i] = [(string) $randomNumber, $answer];
     }
-    engineGame($startQuestion, $rounds);
+    runGame($startQuestion, $rounds);
 }

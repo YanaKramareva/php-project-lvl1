@@ -2,14 +2,14 @@
 
 namespace BrainGames\Games\BrainGCD;
 
-use function BrainGames\Engine\engineGame;
+use function BrainGames\Engine\runGame;
 
 use const BrainGames\Engine\ROUNDS_COUNT;
 
 function calculateGCD(int $randomNumber1, int $randomNumber2): string
 {
     while (true) {
-        if ($randomNumber1 == $randomNumber2) {
+        if ($randomNumber1 === $randomNumber2) {
             return (string) $randomNumber2;
         }
         if ($randomNumber1 > $randomNumber2) {
@@ -31,5 +31,5 @@ function startGame(): void
         $answer = calculateGCD($randomNumber1, $randomNumber2);
         $rounds[$i] = [$question, $answer];
     }
-    engineGame($startQuestion, $rounds);
+    runGame($startQuestion, $rounds);
 }
